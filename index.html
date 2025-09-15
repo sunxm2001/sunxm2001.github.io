@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>孙雪萌 - 个人简历</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --light-text: #777;
+            --section-bg: #fff;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f8f9fa;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+            color: white;
+            padding: 2.5rem 0;
+            text-align: center;
+            position: relative;
+        }
+        
+        .lang-toggle {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+        
+        .lang-btn {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 0.9rem;
+        }
+        
+        .lang-btn.active {
+            background: rgba(255, 255, 255, 0.4);
+            font-weight: bold;
+        }
+        
+        .lang-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+        
+        .profile-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .profile-img {
+            width: 120px; /* 1寸照片尺寸 */
+            height: 160px;
+            object-fit: cover;
+            border: 3px solid white;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow);
+            border-radius: 4px; /* 轻微圆角，保持专业感 */
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .title {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+        }
+        
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .contact-info div {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .basic-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        
+        .two-column {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        
+        section {
+            background: var(--section-bg);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+            height: fit-content;
+        }
+        
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 2px solid var(--secondary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .education-item, .paper-item, .honor-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .institution {
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .date {
+            color: var(--light-text);
+            font-style: italic;
+            margin: 0.3rem 0;
+        }
+        
+        .details {
+            margin-left: 0.5rem;
+        }
+        
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .skill-category {
+            margin-bottom: 1.5rem;
+        }
+        
+        .skill-category h3 {
+            color: var(--accent-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .paper-item p {
+            margin-bottom: 0.5rem;
+        }
+        
+        .honors-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        
+        .honor-item {
+            background: #f8f9fa;
+            padding: 1.2rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--secondary-color);
+            transition: all 0.3s ease;
+        }
+        
+        .honor-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .honor-title {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .honor-date {
+            font-size: 0.85rem;
+            color: var(--light-text);
+            margin-bottom: 0.5rem;
+        }
+        
+        .honor-description {
+            font-size: 0.95rem;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: var(--primary-color);
+            color: white;
+            margin-top: 2rem;
+            border-radius: 10px 10px 0 0;
+        }
+        
+        /* 英文内容默认隐藏 */
+        .english-content {
+            display: none;
+        }
+        
+        @media (max-width: 968px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .contact-info, .basic-info {
+                flex-direction: column;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            
+            .skills-container, .honors-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .lang-toggle {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 1rem;
+            }
+        }
+        
+        /* 打印样式 */
+        @media print {
+            body {
+                background: white;
+                color: black;
+                font-size: 12pt;
+            }
+            
+            header {
+                background: white !important;
+                color: black;
+                padding: 1rem 0;
+            }
+            
+            section {
+                box-shadow: none;
+                margin: 1rem 0;
+                padding: 1rem;
+            }
+            
+            .profile-img {
+                border: 2px solid #ccc;
+                filter: grayscale(100%);
+            }
+            
+            .contact-info div, .basic-info {
+                justify-content: flex-start;
+            }
+            
+            footer {
+                display: none;
+            }
+            
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            
+            .lang-toggle {
+                display: none;
+            }
+            
+            .english-content {
+                display: block;
+            }
+            
+            .chinese-content {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="lang-toggle">
+                <button class="lang-btn active" id="chinese-btn">中文</button>
+                <button class="lang-btn" id="english-btn">English</button>
+            </div>
+            
+            <div class="profile-container">
+                <!-- 请替换以下图片路径为您的实际照片 -->
+                <img src="media/image1.jpeg" alt="孙雪萌" class="profile-img">
+                <h1>孙雪萌 (Xuemeng Sun)</h1>
+                <p class="title">金融工程专业 | 经济学硕士</p>
+                
+                <div class="contact-info">
+                    <div>
+                        <i class="fas fa-phone"></i>
+                        <span>18763984808</span>
+                    </div>
+                    <div>
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:sunxuemeng@stu.zuel.edu.cn" style="color: white;">sunxuemeng@stu.zuel.edu.cn</a>
+                    </div>
+                </div>
+                
+                <div class="basic-info">
+                    <div>出生年月: 2001年6月</div>
+                    <div>政治面貌: 中共党员</div>
+                    <div>性别: 女</div>
+                    <div>民族: 汉族</div>
+                    <div>籍贯: 山东济南</div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <main class="container">
+        <!-- 中文内容 -->
+        <div class="chinese-content">
+            <div class="two-column">
+                <section id="education">
+                    <h2><i class="fas fa-graduation-cap"></i> 教育背景</h2>
+                    
+                    <div class="education-item">
+                        <div class="institution">中南财经政法大学 (ZUEL), 武汉, 湖北, 中国</div>
+                        <div class="date">2023.09 -- 2026.06</div>
+                        <div class="details">
+                            <p>经济学硕士, 金融工程专业</p>
+                            <p>GPA: 3.97 / 4.00 (排名: 1/33)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="institution">山东财经大学 (SDUFE), 济南, 山东, 中国</div>
+                        <div class="date">2019.09 -- 2023.06</div>
+                        <div class="details">
+                            <p>经济学学士, 金融工程专业</p>
+                            <p>GPA: 4.32 / 5.00 (排名: 4/217)</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="skills">
+                    <h2><i class="fas fa-laptop-code"></i> 技术能力</h2>
+                    
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-search"></i> 研究方法</h3>
+                            <p>因果推断, 事件研究法, 公司金融实证, 资产定价, 行为金融学</p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-code"></i> 编程与数据分析</h3>
+                            <p>熟练掌握 <strong>Stata</strong>, <strong>Python</strong>, <strong>Matlab</strong>, <strong>Eviews</strong> 等计量软件</p>
+                            <p><strong>金融数据库</strong>: Wind, Bloomberg, Refinitiv</p>
+                            <p><strong>其他</strong>: Microsoft Office</p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-language"></i> 语言能力</h3>
+                            <p>英语学术读写熟练</p>
+                            <p><strong>雅思: 7</strong> (阅读小分9), <strong>CET-6: 528</strong>, <strong>CET-4: 601</strong></p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-certificate"></i> 专业资质</h3>
+                            <p>银行、证券、基金、期货从业资格证; 初级会计资格证</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <section id="papers">
+                <h2><i class="fas fa-file-alt"></i> 工作论文</h2>
+                
+                <div class="paper-item">
+                    <p><strong>"When Stars Lead: Social Learning and Emotional Transmission among Online Investors"</strong></p>
+                    <p>盛大林, 王陈豪, 许泳昊 （Under Review at <em>Journal of Financial and Quantitative Analysis</em>）</p>
+                    <p>• 中国留美经济学会（CES）2025中国年会接收</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"Academic Independent Directors as ESG Catalysts: Evidence from an Accountability Event"</strong></p>
+                    <p>胡芊芊, 许泳昊, 汤泰劼 （Under Review at <em>Journal of Financial and Quantitative Analysis</em>）</p>
+                    <p>• 第十一届"经世学者"论坛暨第七届清北人三校经济与管理研究生学术论坛, 公司金融分论坛，优秀汇报奖 (汇报人)</p>
+                    <p>• 中国留美经济学会（CES）2025中国年会接收</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"The ESG Halo: Narrative Spillovers, Retail Investors' Misinterpretation, and Trading Behavior"</strong></p>
+                    <p>许泳昊</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"首发经济：增长引擎还是消费幻象？——基于情绪与同侪双重渠道的微观证据"</strong></p>
+                    <p>许泳昊</p>
+                </div>
+            </section>
+            
+            <section id="honors">
+                <h2><i class="fas fa-award"></i> 荣誉奖励</h2>
+                
+                <div class="honors-container">
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-trophy"></i>
+                            <span>优秀报告奖</span>
+                        </div>
+                        <div class="honor-date">2025</div>
+                        <div class="honor-description">
+                            第十一届"经世学者"论坛暨第七届清北人三校经济与管理研究生学术论坛
+                        </div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-medal"></i>
+                            <span>山东省优秀毕业生</span>
+                        </div>
+                        <div class="honor-date">2023</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-certificate"></i>
+                            <span>全国大学生英语竞赛 (NECCS) 三等奖</span>
+                        </div>
+                        <div class="honor-date">2021</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-certificate"></i>
+                            <span>全国大学生语言文字能力大赛三等奖</span>
+                        </div>
+                        <div class="honor-date">2022</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>山东财经大学荣誉</span>
+                        </div>
+                        <div class="honor-date">2019-2023</div>
+                        <div class="honor-description">
+                            优秀共青团员(2次)、一等奖学金(3次)、校长奖学金(学院前3‰)、优秀学生、优秀学生干部
+                        </div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>中南财经政法大学荣誉</span>
+                        </div>
+                        <div class="honor-date">2023-2026</div>
+                        <div class="honor-description">
+                            二等奖学金(入学最高)、优秀党员(2次)、优秀研究生干部、一等奖学金、优秀研究生
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- 英文内容 -->
+        <div class="english-content">
+            <div class="two-column">
+                <section id="education-en">
+                    <h2><i class="fas fa-graduation-cap"></i> Education</h2>
+                    
+                    <div class="education-item">
+                        <div class="institution">Zhongnan University of Economics and Law, Wuhan, Hubei, China</div>
+                        <div class="date">Sep. 2023 -- Jun. 2026</div>
+                        <div class="details">
+                            <p>Master of Economics in Financial Engineering</p>
+                            <p>GPA: 3.97 / 4.00 (Rank: 1/33)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="education-item">
+                        <div class="institution">Shandong University of Finance and Economics, Jinan, Shandong, China</div>
+                        <div class="date">Sep. 2019 -- Jun. 2023</div>
+                        <div class="details">
+                            <p>Bachelor of Economics in Financial Engineering</p>
+                            <p>GPA: 4.32 / 5.00 (Rank: 4/217)</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section id="skills-en">
+                    <h2><i class="fas fa-laptop-code"></i> Research & Technical Skills</h2>
+                    
+                    <div class="skills-container">
+                        <div class="skill-category">
+                            <h3><i class="fas fa-search"></i> Research Methods</h3>
+                            <p>Causal Inference, Corporate Finance, Asset Pricing, Behavioral Finance</p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-code"></i> Programming & Data Analysis</h3>
+                            <p>Proficient in <strong>Stata</strong>, <strong>Python</strong>, <strong>Matlab</strong>, <strong>Eviews</strong></p>
+                            <p><strong>Databases</strong>: Wind, Bloomberg, Refinitiv</p>
+                            <p><strong>Other</strong>: Microsoft Office</p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-language"></i> Language Skills</h3>
+                            <p>Proficient in academic English reading and writing</p>
+                            <p><strong>IELTS: 7.0</strong>, <strong>CET-6: 528</strong>, <strong>CET-4: 601</strong></p>
+                        </div>
+                        
+                        <div class="skill-category">
+                            <h3><i class="fas fa-certificate"></i> Professional Qualifications</h3>
+                            <p>Qualification Certificates for Banking, Securities, Funds, and Futures Practices; Elementary Accounting Professional Certificate</p>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            
+            <section id="papers-en">
+                <h2><i class="fas fa-file-alt"></i> Working Papers</h2>
+                
+                <div class="paper-item">
+                    <p><strong>"When Stars Lead: Social Learning and Emotional Transmission among Online Investors"</strong></p>
+                    <p>with Dalin Sheng, Chenhao Wang, and Yonghao Xu (Under Review at <em>Journal of Financial and Quantitative Analysis</em>)</p>
+                    <p>• Accepted for presentation at the CES 2025 China Annual Conference</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"Academic Independent Directors as ESG Catalysts: Evidence from an Accountability Event"</strong></p>
+                    <p>with Qianqian Hu, Yonghao Xu and Taijie Tang (Under Review at <em>Journal of Financial and Quantitative Analysis</em>)</p>
+                    <p>• Outstanding Paper Award (Presenter), Corporate Finance Session, 11th "Jingshi Scholar" Forum & 7th Tsinghua-Peking-Renmin Universities Economics and Management Graduate Forum</p>
+                    <p>• Accepted for presentation at the CES 2025 China Annual Conference</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"The ESG Halo: Narrative Spillovers, Retail Investors' Misinterpretation, and Trading Behavior"</strong></p>
+                    <p>with Yonghao Xu</p>
+                </div>
+                
+                <div class="paper-item">
+                    <p><strong>"The Debut Economy: Growth Engine or Consumption Illusion? — Evidence from Dual Channels of Emotion and Peer Effects"</strong></p>
+                    <p>with Yonghao Xu (in Chinese)</p>
+                </div>
+            </section>
+            
+            <section id="honors-en">
+                <h2><i class="fas fa-award"></i> Honors & Awards</h2>
+                
+                <div class="honors-container">
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-trophy"></i>
+                            <span>Outstanding Presentation Award</span>
+                        </div>
+                        <div class="honor-date">2025</div>
+                        <div class="honor-description">
+                            The 11th "Jingshi Scholar" Forum & The 7th Tri-University (Tsinghua, Peking, Renmin) Graduate Academic Forum on Economics and Management
+                        </div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-medal"></i>
+                            <span>Shandong Provincial Outstanding Graduate</span>
+                        </div>
+                        <div class="honor-date">2023</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-certificate"></i>
+                            <span>Third Prize, National English Competition for College Students (NECCS)</span>
+                        </div>
+                        <div class="honor-date">2021</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-certificate"></i>
+                            <span>Third Prize, National College Student Language and Character Competence Competition</span>
+                        </div>
+                        <div class="honor-date">2022</div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Shandong University of Finance and Economics</span>
+                        </div>
+                        <div class="honor-date">2019-2023</div>
+                        <div class="honor-description">
+                            President's Scholarship, First-Class Scholarship (3 times), Merit Student, Outstanding Student Leader, Outstanding Youth League Member (2 times)
+                        </div>
+                    </div>
+                    
+                    <div class="honor-item">
+                        <div class="honor-title">
+                            <i class="fas fa-graduation-cap"></i>
+                            <span>Zhongnan University of Economics and Law</span>
+                        </div>
+                        <div class="honor-date">2023-2026</div>
+                        <div class="honor-description">
+                            First-Class Scholarship, Second-Class Scholarship (Highest award for incoming students), Outstanding Graduate Student, Outstanding Graduate Student Leader, Outstanding Party Member (2 times)
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="container">
+            <p>© 2025 Xuemeng Sun - Curriculum Vitae</p>
+            <p>Last Updated: September 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // 语言切换功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const chineseBtn = document.getElementById('chinese-btn');
+            const englishBtn = document.getElementById('english-btn');
+            const chineseContent = document.querySelector('.chinese-content');
+            const englishContent = document.querySelector('.english-content');
+            
+            chineseBtn.addEventListener('click', function() {
+                chineseContent.style.display = 'block';
+                englishContent.style.display = 'none';
+                chineseBtn.classList.add('active');
+                englishBtn.classList.remove('active');
+            });
+            
+            englishBtn.addEventListener('click', function() {
+                chineseContent.style.display = 'none';
+                englishContent.style.display = 'block';
+                chineseBtn.classList.remove('active');
+                englishBtn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
